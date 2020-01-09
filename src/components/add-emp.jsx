@@ -25,7 +25,7 @@ const AddEmp = () => {
       });
     const handleEmployeeChange = (e) => setEmployeeState({
         ...employeeState,
-        [e.target.name]: [e.target.value],
+        [e.target.name]: e.target.value,
       });
       const handleSkillChange = (e) => {
         const updatedSkills = [...skillState];
@@ -37,8 +37,8 @@ const AddEmp = () => {
     };
     const handleSubmit=async ()=>{
         const input = {
-            firstname:employeeState.firstname[0],
-            lastname:employeeState.lastname[0]
+            firstname:employeeState.firstname,
+            lastname:employeeState.lastname
        }
         const result = await API.graphql(graphqlOperation(createEmployee,{input}))
         console.log(result)
