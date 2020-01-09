@@ -11,6 +11,7 @@ export const createEmployee = `mutation CreateEmployee(
     lastname
     address {
       items {
+        id
         line1
         line2
         city
@@ -39,6 +40,7 @@ export const updateEmployee = `mutation UpdateEmployee(
     lastname
     address {
       items {
+        id
         line1
         line2
         city
@@ -67,6 +69,7 @@ export const deleteEmployee = `mutation DeleteEmployee(
     lastname
     address {
       items {
+        id
         line1
         line2
         city
@@ -90,6 +93,7 @@ export const createAddress = `mutation CreateAddress(
   $condition: ModelAddressConditionInput
 ) {
   createAddress(input: $input, condition: $condition) {
+    id
     line1
     line2
     city
@@ -114,6 +118,7 @@ export const updateAddress = `mutation UpdateAddress(
   $condition: ModelAddressConditionInput
 ) {
   updateAddress(input: $input, condition: $condition) {
+    id
     line1
     line2
     city
@@ -138,6 +143,7 @@ export const deleteAddress = `mutation DeleteAddress(
   $condition: ModelAddressConditionInput
 ) {
   deleteAddress(input: $input, condition: $condition) {
+    id
     line1
     line2
     city

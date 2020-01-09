@@ -8,6 +8,7 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
     lastname
     address {
       items {
+        id
         line1
         line2
         city
@@ -33,6 +34,7 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
     lastname
     address {
       items {
+        id
         line1
         line2
         city
@@ -58,6 +60,7 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
     lastname
     address {
       items {
+        id
         line1
         line2
         city
@@ -78,6 +81,7 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
 `;
 export const onCreateAddress = `subscription OnCreateAddress {
   onCreateAddress {
+    id
     line1
     line2
     city
@@ -99,6 +103,7 @@ export const onCreateAddress = `subscription OnCreateAddress {
 `;
 export const onUpdateAddress = `subscription OnUpdateAddress {
   onUpdateAddress {
+    id
     line1
     line2
     city
@@ -120,6 +125,7 @@ export const onUpdateAddress = `subscription OnUpdateAddress {
 `;
 export const onDeleteAddress = `subscription OnDeleteAddress {
   onDeleteAddress {
+    id
     line1
     line2
     city

@@ -8,6 +8,7 @@ export const getEmployee = `query GetEmployee($id: ID!) {
     lastname
     address {
       items {
+        id
         line1
         line2
         city
@@ -49,6 +50,7 @@ export const listEmployees = `query ListEmployees(
 `;
 export const getAddress = `query GetAddress($id: ID!) {
   getAddress(id: $id) {
+    id
     line1
     line2
     city
@@ -75,6 +77,7 @@ export const listAddresss = `query ListAddresss(
 ) {
   listAddresss(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
+      id
       line1
       line2
       city

@@ -15,6 +15,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import {deleteSkill} from '../graphql/mutations';
+import {deleteAddress} from '../graphql/mutations';
 import {getEmployee} from '../graphql/queries'
 import {API,graphqlOperation  } from "aws-amplify";
 
@@ -58,7 +59,20 @@ export default function Employee(props) {
       return ele.id !== item.id;
     })
   );
-};
+  };
+  const handleDeleteAddrs = async (id)=>{
+    const input ={
+      id:id
+  }
+  console.log(id)
+  const result = await API.graphql(graphqlOperation(deleteAddress,{input}))
+  console.log(result)
+  setaddress(
+  address.filter(ele => {
+    return ele.id !== id;
+  })
+  );
+  }
   return (
      
     <div className="container">
@@ -140,7 +154,7 @@ export default function Employee(props) {
                   <Button size="small" color="primary">
                     edit
                   </Button>
-                  <Button size="small" color="primary" >
+                  <Button size="small" color="primary" onClick={()=>handleDeleteAddrs(addrs.id)} >
                     delete
                   </Button>
                 </CardActions>
