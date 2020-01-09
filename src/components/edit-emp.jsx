@@ -1,26 +1,25 @@
 import React, { useState } from 'react'; 
 
-import {createEmployee } from '../graphql/mutations'
+import {updateEmployee } from '../graphql/mutations'
 import {API,graphqlOperation  } from "aws-amplify";
 
 import './add-emp.css'
 
-const AddEmp = (props) => {  
-   const [empState,setEmpState] = useState({
-     firstname:"",
-     lastname:""
-   })
+const EditEmp = (props) => {  
+    console.log(props)
+   const [empState,setEmpState] = useState(props.item)
 
-   const handleAdd  =async e=>{
+   const handleUpdate  =async e=>{
       e.preventDefault();
       const input = {
+          id:empState.id,
         firstname:empState.firstname,
         lastname:empState.lastname
         }
-      const result = await API.graphql(graphqlOperation(createEmployee,{input}))
+      const result = await API.graphql(graphqlOperation(updateEmployee,{input}))
 
       console.log(result)
-      console.log(empState)
+      
       props.closeModal(result.data.createEmployee)
         
 
@@ -33,14 +32,14 @@ const AddEmp = (props) => {
    }
 
    return (
-     <form onSubmit={handleAdd}>
+     <form onSubmit={handleUpdate}>
        <label htmlFor="firstname">first name</label>
        <input type="text" name="firstname" value={empState.firstname} onChange={handleChange} />
        <label htmlFor="lastname">last name</label>
        <input type="text" name="lastname" value={empState.lastname} onChange={handleChange} />
-       <input type="submit" value="add employee"/>
+       <input type="submit" value="update employee"/>
      </form>
    )
    
 };
-export default AddEmp;
+export default EditEmp;

@@ -19,14 +19,28 @@ import {deleteAddress} from '../graphql/mutations';
 import {getEmployee} from '../graphql/queries'
 import {API,graphqlOperation  } from "aws-amplify";
 
+
+
 export default function Employee(props) {
-  console.log(props.match.params.id);
+  //console.log(props.match.params.id);
   const useStyles = makeStyles(theme => ({
     root: { flexGrow: 1, maxWidth: 752 },
     demo: { backgroundColor: theme.palette.background.paper },
     title: { margin: theme.spacing(4, 0, 2) }
   }));
-  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+};
+
+const handleClose = () => {
+    setAnchorEl(null);
+};
+
+const classes = useStyles();
+
+
   const [dense] = React.useState(false);
   const [secondary] = React.useState(false);
 
@@ -103,16 +117,16 @@ export default function Employee(props) {
                   return (
                     <ListItem key={skill.id}>
                       
-                      <ListItemAvatar> {key + 1} </ListItemAvatar>
+                      
                       <ListItemText
                         primary={skill.name}
                         secondary={secondary ? "Secondary text" : null}
                       />
                       <ListItemSecondaryAction>
                         
-                        <IconButton edge="end" aria-label="delete">
+                        <IconButton edge="end" aria-label="delete"  onClick={()=>handleDelete(skill)}>
                          
-                          <DeleteIcon onClick={()=>handleDelete(skill)} />
+                          <DeleteIcon />
                         </IconButton>
                       </ListItemSecondaryAction>
                     </ListItem>
@@ -162,6 +176,7 @@ export default function Employee(props) {
             </div>
           );
         })}
+     
       </div>
       </div>
     </div>
