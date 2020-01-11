@@ -20,7 +20,7 @@ const EditEmp = (props) => {
 
       console.log(result)
       
-      props.closeModal(result.data.createEmployee)
+      props.closeModal(result.data)
         
 
    }

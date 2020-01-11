@@ -21,7 +21,7 @@ const AddEmp = (props) => {
 
       console.log(result)
       console.log(empState)
-      props.closeModal(result.data.createEmployee)
+      props.closeModal(result.data)
         
 
    }

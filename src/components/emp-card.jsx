@@ -49,31 +49,35 @@ export default function Emp(props) {
   const [employees, setEmployees] = React.useState([]);
   const [employee, setEmployee] = React.useState({});
   useEffect( ()=>{
-     const fetchData =async ()=>{
-        const result = await API.graphql(graphqlOperation(listEmployees))
-        console.log(result.data.listEmployees)
-       setEmployees(
-        result.data.listEmployees.items
-       )
-        
-      }
+    
       fetchData()
-      const createEmployeeListener = API.graphql(graphqlOperation(onCreateEmployee))
-             .subscribe({
-                 next: employeeData => {
-                   console.log(employeeData)
-                      const newEmp = employeeData.data.onCreateEmployee
-                      const prevEmps = employees.filter( e => e.id !== newEmp.id)
+      // const createEmployeeListener = API.graphql(graphqlOperation(onCreateEmployee))
+      //        .subscribe({
+      //            next: employeeData => {
+      //              console.log(employeeData.value.onCreateEmployee)
+      //                 const newEmp = employeeData.value.data.onCreateEmployee
+      //                 const prevEmps = employees.filter( e => e.id !== newEmp.id)
 
-                      const updatedPosts = [newEmp, ...prevEmps]
+      //                 const updatedEmps = [newEmp, ...prevEmps]
 
-                      this.setEmployees(updatedPosts)
-                 }
-             })
-
-            return createEmployeeListener.unsubscribe() 
+      //                 setEmployees(updatedEmps)
+      //            }
+      //        })
+            
+      //        return () => {
+      //         console.log("cleaned up");
+      //         createEmployeeListener.unsubscribe() 
+      //       };
+        
   },[])
-
+  const fetchData =async ()=>{
+    const result = await API.graphql(graphqlOperation(listEmployees))
+    console.log(result.data.listEmployees)
+   setEmployees(
+    result.data.listEmployees.items
+   )
+    
+  }
   let history = useHistory();
   const handleEmployee = emp => {
     history.push("/employee/" + emp.id);
@@ -112,9 +116,18 @@ setOpen(true);
 handleClose();
 };
 
-const handleCloseModal = () => {
-setOpen(false);
-};
+  const handleCloseModal = (emp) => {
+
+  setOpen(false);
+  if(emp.updateEmployee){
+    setEmployees([
+      emp.updateEmployee,...employees.filter(e=>e.id!==emp.updateEmployee.id)
+    ])
+  }else if(emp.createEmployee){
+
+  }
+
+  };
   return (
     <div className="container">
       <div className="row">
