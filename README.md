@@ -8,14 +8,34 @@
 
 ## We will start with AWS AppSync Setup and AWS Console.
 1. Create account on [AWS Console](https://console.aws.amazon.com/console)
+    ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/create.PNG) 
+
 2. There are 2 ways to create AppSync GraphQL API
+
     1. Through AWS console online 
-        In This method, We have to integrate the API later once the Client Application is developed.
-        I completed this part first than I moved to client application part that was for testing purpose but
-        In final application I created a new AppSync service using aws amplify CLI commands i.e the 2nd method.
+    
+        ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/appsync.PNG) 
+
+        ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/create%20api.PNG)
+
+        ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/project%20name.PNG)
+
+        ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/edit%20terminal.PNG)
+
+        ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/edit%20schema.PNG)
+
+        ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/employee-ds.PNG)
+
+        ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/queries%20terminal.PNG)
+
+       Now the backend GraphQL API is ready to integrate wit any fontend client application.
+       In This method, We have to integrate the API later once the Client Application is developed.
+       I completed this part first than I moved to client application part that was for testing purpose but
+       In final application I created a new AppSync service using aws amplify CLI commands i.e the 2nd method.
         
     2. Through AWS Amplify CLI commands 
         1. Install [NodeJS](https://nodejs.org/en/)
+        
         2. Run  ` npm install -g @aws-amplify/cli ` on CLI
             
             This command will install @aws-appsync packages gloablly
