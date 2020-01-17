@@ -28,12 +28,14 @@
 
         ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/queries%20terminal.PNG)
 
-       Now the backend GraphQL API is ready to integrate wit any fontend client application.
+       Now the backend GraphQL API is ready to integrate with any fontend client application.
+
        In This method, We have to integrate the API later once the Client Application is developed.
        I completed this part first than I moved to client application part that was for testing purpose but
        In final application I created a new AppSync service using aws amplify CLI commands i.e the 2nd method.
         
     2. Through AWS Amplify CLI commands 
+
         1. Install [NodeJS](https://nodejs.org/en/)
         
         2. Run  ` npm install -g @aws-amplify/cli ` on CLI
@@ -77,8 +79,22 @@
 
             Here model represents a modelto the databse and connection is to give the reference with another model.
         7. Run `amplify push ` this command will create the schema for GraphQL and DynamoDB database follow the steps.
-        
+        8. Below are the screen shots for the AWS backend development work.
+            ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/buildops-crt.PNG) 
 
+            ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/buildops-sc.PNG)
+
+            ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/buildops-ds.PNG)
+
+            ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/empl%20tabl.PNG)
+
+            ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/skill%2tbl.PNG)
+
+            ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/adrs%20table.PNG)
+
+            ![aws](https://github.com/manojgupta2309/aws-appsync-graphql-reactjs/blob/master/public/project-images/buildops-qr.PNG)
+        
+        Here we completed the backend setup and same is integrated with ReactJS client application using aws amplify service.
 
     
 
