@@ -48,36 +48,43 @@ export default function Emp(props) {
   const classes = useStyles();
   const [employees, setEmployees] = React.useState([]);
   const [employee, setEmployee] = React.useState({});
+  //const createEmployeeListener=null;
   useEffect( ()=>{
     
-      fetchData()
-      // const createEmployeeListener = API.graphql(graphqlOperation(onCreateEmployee))
-      //        .subscribe({
-      //            next: employeeData => {
-      //              console.log(employeeData.value.onCreateEmployee)
-      //                 const newEmp = employeeData.value.data.onCreateEmployee
-      //                 const prevEmps = employees.filter( e => e.id !== newEmp.id)
+      
+      const createEmployeeListener = API.graphql(graphqlOperation(onCreateEmployee))
+             .subscribe({
+                 next: employeeData => {
+                   console.log(employeeData.value.onCreateEmployee)
+                      const newEmp = employeeData.value.data.onCreateEmployee
+                      console.log("--",employees)
+                      const prevEmps = employees.filter( e => e.id !== newEmp.id)
 
-      //                 const updatedEmps = [newEmp, ...prevEmps]
+                      const updatedEmps = [newEmp, ...prevEmps]
 
-      //                 setEmployees(updatedEmps)
-      //            }
-      //        })
+                      setEmployees(updatedEmps)
+                 }
+             })
+             return () => {
+              console.log("cleaned up");
+              createEmployeeListener.unsubscribe() 
+            };
             
-      //        return () => {
-      //         console.log("cleaned up");
-      //         createEmployeeListener.unsubscribe() 
-      //       };
         
-  },[])
+  },[employees])
+
+
+  useEffect( ()=>{
   const fetchData =async ()=>{
     const result = await API.graphql(graphqlOperation(listEmployees))
     console.log(result.data.listEmployees)
    setEmployees(
     result.data.listEmployees.items
    )
-    
+   console.log(employees)
   }
+  fetchData()
+},[])
   let history = useHistory();
   const handleEmployee = emp => {
     history.push("/employee/" + emp.id);
